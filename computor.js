@@ -10,6 +10,7 @@ function main() {
 	const equation = process.argv[2].split(' ');
 	console.log('equation', equation);
 	if (!parse(equation)) handleError('Invalid Equation');
+	reduce(equation);
 }
 
 main();

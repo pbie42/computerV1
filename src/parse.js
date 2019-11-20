@@ -1,10 +1,4 @@
-function isNum(str) {
-	return /^\d+$/.test(str);
-}
-
-function isAlpha(str) {
-	return /^[a-zA-Z]+$/.test(str);
-}
+const { isAlpha, isNum } = require('./utils');
 
 function handlePower(powerPiece) {
 	const [letter, power] = powerPiece.split('^');
@@ -57,7 +51,10 @@ function parse(equation) {
 				return false;
 			}
 			if (equation[x] === '=') equals++;
-			if (equals > 1) return false;
+			if (equals > 1) {
+				console.log('Too many equals signs');
+				return false;
+			}
 		}
 	}
 	return true;
