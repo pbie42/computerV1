@@ -19,6 +19,10 @@ function handlePower(powerPiece) {
 		console.log('Degree greater than 2');
 		return false;
 	}
+	if (power < 0) {
+		console.log('Negative degrees not allowed');
+		return false;
+	}
 	return true;
 }
 
@@ -44,7 +48,6 @@ function parse(equation) {
 				equation[x] != '*' &&
 				equation[x] != '+' &&
 				equation[x] != '-' &&
-				equation[x] != '/' &&
 				equation[x] != '='
 			) {
 				console.log('invalid operator', equation[x]);
