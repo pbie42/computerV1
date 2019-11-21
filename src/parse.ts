@@ -53,6 +53,16 @@ function parse(equation: string[]): boolean {
 				console.log('invalid operator', equation[x]);
 				return false;
 			}
+			if (
+				(equation[x] === '*' ||
+					equation[x] === '+' ||
+					equation[x] === '-' ||
+					equation[x] === '=') &&
+				!equation[x + 1]
+			) {
+				console.log('invalid structure ending', equation[x]);
+				return false;
+			}
 			if (equation[x] === '=') equals++;
 			if (equals > 1) {
 				console.log('Too many equals signs');
