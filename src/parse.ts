@@ -1,6 +1,6 @@
-const { isAlpha, isNum } = require('./utils');
+import { isAlpha, isNum } from './utils';
 
-function handlePower(powerPiece) {
+function handlePower(powerPiece: string): boolean {
 	const [letter, power] = powerPiece.split('^');
 	if (!power) {
 		if (powerPiece.length === 1 && isAlpha(powerPiece)) return true;
@@ -15,24 +15,24 @@ function handlePower(powerPiece) {
 		console.log('Invalid Power');
 		return false;
 	}
-	if (power > 2) {
+	if (Number(power) > 2) {
 		console.log('Degree greater than 2');
 		return false;
 	}
-	if (power < 0) {
+	if (Number(power) < 0) {
 		console.log('Negative degrees not allowed');
 		return false;
 	}
 	return true;
 }
 
-function parse(equation) {
-	let variable = null;
-	let equals = 0;
-	let x = -1;
+function parse(equation: string[]): boolean {
+	let variable: string = '';
+	let equals: number = 0;
+	let x: number = -1;
 	while (++x < equation.length) {
 		if (x % 2 === 0) {
-			if (isNaN(equation[x])) {
+			if (isNaN(Number(equation[x]))) {
 				if (!handlePower(equation[x])) return false;
 				else {
 					const newVar = equation[x][0];
@@ -63,6 +63,4 @@ function parse(equation) {
 	return true;
 }
 
-module.exports = {
-	parse
-};
+export { parse };

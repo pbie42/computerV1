@@ -1,0 +1,29 @@
+{
+	"name": "computorv1",
+	"version": "1.0.0",
+	"description": "42 Project",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev-school": "/sgoinfre/goinfre/Perso/pbie/.npm-global/bin/tsc -w -p .",
+		"dev": "tsc -w -p .",
+		"build": "tsc -p ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/pbie42/computorV1.git"
+	},
+	"author": "pbie42",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/pbie42/computorV1/issues"
+	},
+	"homepage": "https://github.com/pbie42/computorV1#readme",
+	"dependencies": {
+		"@types/node": "^12.12.11"
+	},
+	"devDependencies": {
+		"ts-node": "^8.5.2",
+		"typescript": "^3.7.2"
+	}
+}
