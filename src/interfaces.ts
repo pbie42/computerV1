@@ -3,3 +3,8 @@ export interface ICommons {
 	degree1: string[];
 	degree2: string[];
 }
+
+export interface IExpressions {
+	left: ICommons;
+	right: ICommons;
+}

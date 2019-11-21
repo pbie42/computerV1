@@ -1,11 +1,18 @@
 import { handleError } from './error';
-import { ICommons } from './interfaces';
+import { IExpressions } from './interfaces';
 import { parse } from './parse';
 function main() {
-	let commons: ICommons = {
-		degree0: [],
-		degree1: [],
-		degree2: []
+	let expressions: IExpressions = {
+		left: {
+			degree0: [],
+			degree1: [],
+			degree2: []
+		},
+		right: {
+			degree0: [],
+			degree1: [],
+			degree2: []
+		}
 	};
 	if (process.argv.length <= 2) return handleError('Too few arguments');
 	if (process.argv.length >= 4) return handleError('Too many arguments');
@@ -15,7 +22,7 @@ function main() {
 	const equation: string[] = process.argv[2].split(' ').filter(eq => eq);
 	console.log('equation', equation);
 	if (!parse(equation)) handleError('Invalid Equation');
-	console.log('commons', commons);
+	// console.log('expressions', expressions);
 	// reduceEquation(equation);
 }
 

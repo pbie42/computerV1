@@ -1,6 +1,6 @@
-import { isAlpha, isNum } from './utils';
+import { isAlpha, isNotOperator, isNum, isOperator } from './utils';
 
-function handlePower(powerPiece: string): boolean {
+function verifyPower(powerPiece: string): boolean {
 	const [letter, power] = powerPiece.split('^');
 	if (!power) {
 		if (powerPiece.length === 1 && isAlpha(powerPiece)) return true;
@@ -33,7 +33,7 @@ function parse(equation: string[]): boolean {
 	while (++x < equation.length) {
 		if (x % 2 === 0) {
 			if (isNaN(Number(equation[x]))) {
-				if (!handlePower(equation[x])) return false;
+				if (!verifyPower(equation[x])) return false;
 				else {
 					const newVar = equation[x][0];
 					if (!variable) variable = newVar;
@@ -44,22 +44,11 @@ function parse(equation: string[]): boolean {
 				}
 			}
 		} else {
-			if (
-				equation[x] != '*' &&
-				equation[x] != '+' &&
-				equation[x] != '-' &&
-				equation[x] != '='
-			) {
+			if (isNotOperator(equation[x])) {
 				console.log('invalid operator', equation[x]);
 				return false;
 			}
-			if (
-				(equation[x] === '*' ||
-					equation[x] === '+' ||
-					equation[x] === '-' ||
-					equation[x] === '=') &&
-				!equation[x + 1]
-			) {
+			if (isOperator(equation[x]) && !equation[x + 1]) {
 				console.log('invalid structure ending', equation[x]);
 				return false;
 			}
