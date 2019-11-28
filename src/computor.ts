@@ -1,6 +1,8 @@
 import { handleError } from './error';
 import { IExpressions } from './interfaces';
 import { parse } from './parse';
+import { reduceEquation } from './reduce';
+import { sortEquation } from './sort';
 function main() {
 	let expressions: IExpressions = {
 		left: {
@@ -22,8 +24,9 @@ function main() {
 	const equation: string[] = process.argv[2].split(' ').filter(eq => eq);
 	console.log('equation', equation);
 	if (!parse(equation)) handleError('Invalid Equation');
-	// console.log('expressions', expressions);
-	// reduceEquation(equation);
+	sortEquation(equation, expressions);
+	console.log('expressions', expressions);
+	reduceEquation(expressions);
 }
 
 main();

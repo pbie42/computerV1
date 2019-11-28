@@ -7,4 +7,5 @@ export interface ICommons {
 export interface IExpressions {
 	left: ICommons;
 	right: ICommons;
+	[key: string]: ICommons;
 }
